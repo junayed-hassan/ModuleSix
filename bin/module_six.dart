@@ -1,32 +1,39 @@
-class Book {
-  String title;
-  String author;
-  double price;
+abstract class Appliance {
+  void turnOn();
+  void turnOff();
+}
 
-  // Constructor
-  Book(this.title, this.author, this.price);
-
-  // Method to calculate discounted price
-  double discountedPrice(double discountPercent) {
-    return price - (price * discountPercent / 100);
+class Fan extends Appliance {
+  @override
+  void turnOn() {
+    print("Fan is now running...");
   }
 
-  // Method to display book details
-  void display(double discountPercent) {
-    print("Title: $title");
-    print("Author: $author");
-    print("Original Price: $price");
-    print("Discounted Price: ${discountedPrice(discountPercent)}");
-    print("-----------------------------------");
+  @override
+  void turnOff() {
+    print("Fan has been turned off.");
+  }
+}
+
+class Light extends Appliance {
+  @override
+  void turnOn() {
+    print("Light is switched on.");
+  }
+
+  @override
+  void turnOff() {
+    print("Light is switched off.");
   }
 }
 
 void main() {
-  // Creating two Book objects
-  Book book1 = Book("Dart Programming", "John Doe", 500);
-  Book book2 = Book("Flutter Development", "Jane Smith", 800);
+  Fan fan = Fan();
+  Light light = Light();
 
-  // Display details
-  book1.display(10); // 10% discount
-  book2.display(20); // 20% discount
+  fan.turnOn();
+  fan.turnOff();
+
+  light.turnOn();
+  light.turnOff();
 }
