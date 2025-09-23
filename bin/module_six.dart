@@ -1,39 +1,46 @@
-abstract class Appliance {
-  void turnOn();
-  void turnOff();
-}
+class Employee {
+  String name;
+  double salary;
 
-class Fan extends Appliance {
-  @override
-  void turnOn() {
-    print("Fan is now running...");
-  }
+  Employee(this.name, this.salary);
 
-  @override
-  void turnOff() {
-    print("Fan has been turned off.");
+  void displayInfo() {
+    print("Name: $name");
+    print("Salary: $salary");
   }
 }
 
-class Light extends Appliance {
-  @override
-  void turnOn() {
-    print("Light is switched on.");
-  }
+class Manager extends Employee {
+  String department;
+
+  Manager(String name, double salary, this.department) : super(name, salary);
 
   @override
-  void turnOff() {
-    print("Light is switched off.");
+  void displayInfo() {
+    super.displayInfo();
+    print("Department: $department");
+    print("-----------------------------------");
+  }
+}
+
+class Developer extends Employee {
+  String programmingLanguage;
+
+  Developer(String name, double salary, this.programmingLanguage)
+    : super(name, salary);
+
+  @override
+  void displayInfo() {
+    super.displayInfo();
+    print("Programming Language: $programmingLanguage");
+    print("-----------------------------------");
   }
 }
 
 void main() {
-  Fan fan = Fan();
-  Light light = Light();
+  Manager manager = Manager("Alice", 70000, "IT Department");
+  Developer developer = Developer("Bob", 60000, "Dart & Flutter");
 
-  fan.turnOn();
-  fan.turnOff();
-
-  light.turnOn();
-  light.turnOff();
+  manager.displayInfo();
+  developer.displayInfo();
 }
